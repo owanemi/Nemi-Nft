@@ -1,0 +1,11 @@
+{
+    "name": "My Twitter pfp NFT",
+    "description": "This is my twitter pfp hosted on IPFS.",
+    "image": "https://gateway.pinata.cloud/ipfs/QmWKBKdcGv2vGQ9RM8A1dsxpAUZy6o6WgD99TdrmFK3kRX/", 
+    "attributes": [
+        {
+            "trait_type": "Regular-show",
+            "value": "Rigby"
+        }
+    ]
+}
