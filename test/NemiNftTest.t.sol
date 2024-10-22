@@ -12,9 +12,8 @@ contract NemiNftTest is Test {
     NemiNft public nemiNft;
 
     address public minter = makeAddr("first-minter");
-    vm.deal(minter, 1 ether);
 
-    string public constant NEMI_URI = "https://gateway.pinata.cloud/ipfs/QmYATdQebFatAvLZ4JeZ3PySzP7da3dqqLuwVQfD9Qg27F"
+    string public constant NEMI_PFP_URI = "https://gateway.pinata.cloud/ipfs/QmUGmoeNaVSfS8aULgRAmg4vqTYcUoafFPMdLv4W8sKCun/";
 
     function setUp() public {
         deployer = new DeployNemiNft();
@@ -34,9 +33,12 @@ contract NemiNftTest is Test {
 
     }
 
-    function canMintAndHaveABalance() public {
+    function testCanMint() public {
         vm.prank(minter);
+        nemiNft.mintNft(NEMI_PFP);
 
-        nemiNft.mintNft()
+        assert(nemiNft.balanceOf(minter) == 1);
+        assert(keccak256(abi.encodePacked(NEMI_PFP)) == keccak256(abi.encodePacked(nemiNft.tokenURI(0))));
+
     }
 }
